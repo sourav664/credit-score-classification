@@ -42,6 +42,10 @@ The dataset contains **demographic, income, debt, payment behavior, and credit u
 
 ## 🧱 Data Architecture (Medallion Architecture)
 
+<img width="1114" height="805" alt="image" src="https://github.com/user-attachments/assets/9b3ba54d-0676-4bd4-a349-0ada5e44d0eb" />
+
+
+
 This project follows the **Databricks Medallion Architecture**:
 
 ### 🟤 Bronze Layer (Raw Data)
