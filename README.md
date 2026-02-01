@@ -204,5 +204,8 @@ Credit-Score-Prediction/
 Data Scientist | Data Analyst & ML Enthusiast  
 Built with ❤️ using Databricks
 
+Feel free to connect on LinkedIn or explore my other projects.
+
+🔗 LinkedIn: https://www.linkedin.com/in/sourav664
 
 
