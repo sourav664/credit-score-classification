@@ -1,0 +1,699 @@
+{
+  "datasets": [
+    {
+      "name": "0baf9a73",
+      "displayName": "credit_score_stats",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.credit_score_stats"
+      ]
+    },
+    {
+      "name": "24af1c36",
+      "displayName": "delay_payments_risk_stat",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.delay_payments_risk_stat"
+      ]
+    },
+    {
+      "name": "aadf7c02",
+      "displayName": "financial_health_stat",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.financial_health_stat"
+      ]
+    },
+    {
+      "name": "38e88a50",
+      "displayName": "income_group_stats",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.income_group_stats"
+      ]
+    },
+    {
+      "name": "46bece23",
+      "displayName": "loan_risk_stat",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.loan_risk_stat"
+      ]
+    },
+    {
+      "name": "485d8d70",
+      "displayName": "max_debt_and_earning_by_age",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.max_debt_and_earning_by_age"
+      ]
+    },
+    {
+      "name": "e99e3c42",
+      "displayName": "occupation_stats",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.gold.occupation_stats"
+      ]
+    },
+    {
+      "name": "920df0ea",
+      "displayName": "train",
+      "queryLines": [
+        "SELECT * FROM credit_catalog.silver.train"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "c34ea205",
+      "displayName": "Credit Score",
+      "layout": [
+        {
+          "widget": {
+            "name": "average-salary-by-credit-score",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "0baf9a73",
+                  "fields": [
+                    {
+                      "name": "avg_saving_capacity",
+                      "expression": "`avg_saving_capacity`"
+                    },
+                    {
+                      "name": "Credit_Score",
+                      "expression": "`Credit_Score`"
+                    },
+                    {
+                      "name": "avg_salary",
+                      "expression": "`avg_salary`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Credit_Score",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y-reversed"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "avg_salary",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "avg_saving_capacity",
+                  "displayName": "Avg Saving Capcity",
+                  "scale": {
+                    "type": "quantitative",
+                    "colorRamp": {
+                      "mode": "scheme",
+                      "scheme": "greenblue"
+                    }
+                  }
+                }
+              },
+              "frame": {
+                "title": "Average Salary by Credit Score",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "max-monthly-salary-by-age",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "485d8d70",
+                  "fields": [
+                    {
+                      "name": "max_outstanding_debt",
+                      "expression": "`max_outstanding_debt`"
+                    },
+                    {
+                      "name": "Age",
+                      "expression": "`Age`"
+                    },
+                    {
+                      "name": "max_monthly_salary",
+                      "expression": "`max_monthly_salary`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Age",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "max_monthly_salary",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "max_outstanding_debt",
+                  "displayName": "Debt",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              },
+              "frame": {
+                "title": "Max Monthly Salary by Age",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "credit-card-hold-by-income-group",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "38e88a50",
+                  "fields": [
+                    {
+                      "name": "total_customers",
+                      "expression": "`total_customers`"
+                    },
+                    {
+                      "name": "Income_Group",
+                      "expression": "`Income_Group`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "total_customers",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "hideTitle": true
+                  }
+                },
+                "color": {
+                  "fieldName": "Income_Group",
+                  "legend": {
+                    "position": "right"
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "angle-reversed"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Credit Card hold by Income_Group",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "average-emi-ratio",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e99e3c42",
+                  "fields": [
+                    {
+                      "name": "avg_num_loans",
+                      "expression": "`avg_num_loans`"
+                    },
+                    {
+                      "name": "avg_emi",
+                      "expression": "`avg_emi`"
+                    },
+                    {
+                      "name": "Occupation",
+                      "expression": "`Occupation`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "avg_emi",
+                  "displayName": "AVG EMI",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Occupation",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x-reversed"
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "avg_num_loans",
+                  "legend": {
+                    "position": "bottom"
+                  },
+                  "displayName": "Average Number of Loans",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Average EMI by Occupation",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "stack"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "average-amount-invested-monthly",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "920df0ea",
+                  "fields": [
+                    {
+                      "name": "Occupation",
+                      "expression": "`Occupation`"
+                    },
+                    {
+                      "name": "Income_Group",
+                      "expression": "`Income_Group`"
+                    },
+                    {
+                      "name": "avg(Amount_invested_monthly)",
+                      "expression": "AVG(`Amount_invested_monthly`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "Occupation"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "Income_Group"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`Occupation`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Income_Group`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "Occupation"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "Income_Group"
+                  }
+                ],
+                "cell": {
+                  "type": "multi-cell",
+                  "fields": [
+                    {
+                      "fieldName": "avg(Amount_invested_monthly)",
+                      "cellType": "text",
+                      "contentAlignment": "right",
+                      "displayName": "Amount Invested",
+                      "style": {
+                        "type": "color-scale",
+                        "backgroundColor": {
+                          "scale": {
+                            "type": "quantitative"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Average Amount Invested Monthly\n"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 17,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "distribution-of-credit-scores",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "920df0ea",
+                  "fields": [
+                    {
+                      "name": "count(Credit_Score)",
+                      "expression": "COUNT(`Credit_Score`)"
+                    },
+                    {
+                      "name": "Credit_Score",
+                      "expression": "`Credit_Score`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "count(Credit_Score)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "hideTitle": true
+                  }
+                },
+                "color": {
+                  "fieldName": "Credit_Score",
+                  "legend": {
+                    "position": "right",
+                    "hideTitle": false,
+                    "hide": false
+                  },
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "angle-reversed"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "title": "Distribution of Credit Scores",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "0e9570c3",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"text-align:center;display:block\"><span style=\"font-size:36px;line-height:1.5\">**Credit Score Dashboard**</span></span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "811438f9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "920df0ea",
+                  "fields": [
+                    {
+                      "name": "Income_Group",
+                      "expression": "`Income_Group`"
+                    },
+                    {
+                      "name": "min(Num_of_Loan)",
+                      "expression": "MIN(`Num_of_Loan`)"
+                    },
+                    {
+                      "name": "q1(Num_of_Loan)",
+                      "expression": "PERCENTILE(`Num_of_Loan`, 0.25)"
+                    },
+                    {
+                      "name": "median(Num_of_Loan)",
+                      "expression": "MEDIAN(`Num_of_Loan`)"
+                    },
+                    {
+                      "name": "q3(Num_of_Loan)",
+                      "expression": "PERCENTILE(`Num_of_Loan`, 0.75)"
+                    },
+                    {
+                      "name": "max(Num_of_Loan)",
+                      "expression": "MAX(`Num_of_Loan`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "box",
+              "encodings": {
+                "x": {
+                  "fieldName": "Income_Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "whiskerStart": {
+                    "fieldName": "min(Num_of_Loan)"
+                  },
+                  "boxStart": {
+                    "fieldName": "q1(Num_of_Loan)"
+                  },
+                  "boxMid": {
+                    "fieldName": "median(Num_of_Loan)"
+                  },
+                  "boxEnd": {
+                    "fieldName": "q3(Num_of_Loan)"
+                  },
+                  "whiskerEnd": {
+                    "fieldName": "max(Num_of_Loan)"
+                  },
+                  "axis": {
+                    "title": "Num of Loan"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 11,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "distribution-monthly-inhand-salary-across-age",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "920df0ea",
+                  "fields": [
+                    {
+                      "name": "median(Age)",
+                      "expression": "MEDIAN(`Age`)"
+                    },
+                    {
+                      "name": "bin(Monthly_Inhand_Salary, binWidth=1000)",
+                      "expression": "BIN_FLOOR(`Monthly_Inhand_Salary`, 1000)"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "bin(Monthly_Inhand_Salary, binWidth=1000)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "median(Age)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Distribution of Monthly Inhand Salary Across Age"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "b63c4f38",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "2821220d",
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {},
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
